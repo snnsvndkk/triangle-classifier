@@ -44,11 +44,9 @@ Boundaries: side value `0` (invalid) vs. smallest positive value (valid); `a + b
 
 ## Acceptance criteria
 
-<!-- TODO (Sinan): write 2–3 measurable criteria from the stained-glass customer's request (no AI for this part) -->
-
-1.
-2.
-3.
+1. If the three sides do not form a valid triangle, classify_triangle() returns "Invalid" and does not crash.
+2. If the three sides form a right triangle, the result returned by classify_triangle() contains the word "Right".
+3. For at least 10 test cases covering valid, invalid, and decimal side lengths, classify_triangle() returns the expected classification for each test case.
 
 ## AI-use disclosure
 

@@ -6,7 +6,7 @@ Classifies a triangle from three side lengths as `Invalid`, `Equilateral`, `Isos
 
 ```bash
 pip install -r requirements.txt
-pytest -v
+python -m pytest -v
 ```
 
 ## Why an equilateral triangle can never be right
@@ -36,11 +36,12 @@ Boundaries: side value `0` (invalid) vs. smallest positive value (valid); `a + b
 
 | Test | Copilot-suggested? | Kept / edited / rejected | Why |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| test_invalid_zero_side | Yes | Edited | Copilot expected "Invalid triangle"; the spec returns exactly "Invalid". |
+| test_degenerate_triangle | Yes | Edited | Copilot expected "Degenerate"; per the spec, a degenerate triangle (1+2=3) is "Invalid". |
+| test_equilateral | Yes | Kept | (5, 5, 5) → "Equilateral" matches the spec. |
+| test_isosceles | Yes | Kept | (5, 5, 3) is valid, exactly two sides equal, not right → "Isosceles". |
+| test_scalene | Yes | Kept | (4, 5, 6) has all sides different and is not right → "Scalene". |
+| test_right_triangle_non_integer | Yes | Edited | Copilot used (3.0, 4.0, 5.0) expecting "Right". "Right" alone isn't a valid result (should be "Right Scalene"), and 3.0/4.0/5.0 are still integers. Changed to (5, 5, 5·√2) → "Right Isosceles" so the tolerance check is actually exercised. |
 
 ## Acceptance criteria
 
